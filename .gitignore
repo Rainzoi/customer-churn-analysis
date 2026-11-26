@@ -1,39 +1,18 @@
+
 # Python
 __pycache__/
 *.py[cod]
-*.pyo
 
 # Virtual environment
 .venv/
 venv/
-env/
-
-# Jupyter
-.ipynb_checkpoints/
 
 # Environment variables
 .env
 .env.*
 
-# PostgreSQL / local data
-*.db
-
-# OS
-Thumbs.db
-Desktop.ini
-
 # VS Code
 .vscode/
-
-# Python build files
-build/
-dist/
-*.egg-info/
-
-# Testing
-.pytest_cache/
-.coverage
-htmlcov/
 
 # Project data
 data/raw/*
@@ -41,3 +20,7 @@ data/raw/*
 
 data/processed/*
 !data/processed/.gitkeep
+
+# Saved models
+models/*
+!models/.gitkeep

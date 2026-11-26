@@ -1,0 +1,235 @@
+
+{% extends "base.html" %}
+
+{% block title %}Churn Analysis | Customer Churn Dashboard{% endblock %}
+
+{% block heading %}Churn Analysis{% endblock %}
+
+{% block content %}
+
+    <div class="welcome-section">
+        <h2>Understanding Customer Churn</h2>
+        <p>
+            Explore how customer characteristics and behavior relate to churn.
+        </p>
+    </div>
+
+    <div class="analysis-grid">
+
+        <div class="analysis-card">
+            <h2>Churn Rate by Complaints</h2>
+            <p class="chart-description">
+                Comparison of customer churn rates based on whether
+                a complaint was recorded.
+            </p>
+
+            {% for item in complaint_stats %}
+                <div class="analysis-row">
+                    <div class="chart-label">
+                        <span>
+                            {% if item.Complains == 1 %}
+                                Complaints (1)
+                            {% else %}
+                                No Complaints (0)
+                            {% endif %}
+                        </span>
+
+                        <span>
+                            {{ "{:,}".format(item["count"]) }}
+                            customers |
+                            {{ "%.2f"|format(item.churn_rate) }}%
+                        </span>
+                    </div>
+
+                    <progress
+                        class="chart-progress analysis"
+                        value="{{ item.churn_rate }}"
+                        max="100">
+                    </progress>
+                </div>
+            {% endfor %}
+        </div>
+
+        <div class="analysis-card">
+            <h2>Churn Rate by Status</h2>
+            <p class="chart-description">
+                Comparison of customer churn rates across the two
+                recorded status categories.
+            </p>
+
+            {% for item in status_stats %}
+                <div class="analysis-row">
+                    <div class="chart-label">
+                        <span>Status {{ item.Status }}</span>
+
+                        <span>
+                            {{ "{:,}".format(item["count"]) }}
+                            customers |
+                            {{ "%.2f"|format(item.churn_rate) }}%
+                        </span>
+                    </div>
+
+                    <progress
+                        class="chart-progress analysis"
+                        value="{{ item.churn_rate }}"
+                        max="100">
+                    </progress>
+                </div>
+            {% endfor %}
+        </div>
+
+        <div class="analysis-card">
+            <h2>Churn Rate by Tariff Plan</h2>
+            <p class="chart-description">
+                Comparison of customer churn rates across the
+                available tariff plans.
+            </p>
+
+            {% for item in tariff_stats %}
+                <div class="analysis-row">
+                    <div class="chart-label">
+                        <span>Tariff Plan {{ item["Tariff Plan"] }}</span>
+
+                        <span>
+                            {{ "{:,}".format(item["count"]) }}
+                            customers |
+                            {{ "%.2f"|format(item.churn_rate) }}%
+                        </span>
+                    </div>
+
+                    <progress
+                        class="chart-progress analysis"
+                        value="{{ item.churn_rate }}"
+                        max="100">
+                    </progress>
+                </div>
+            {% endfor %}
+        </div>
+
+        <div class="analysis-card">
+            <h2>Churn Rate by Subscription Length</h2>
+            <p class="chart-description">
+                Comparison of customer churn rates based on how long
+                customers have maintained their subscriptions.
+            </p>
+
+            {% for item in subscription_stats %}
+                <div class="analysis-row">
+                    <div class="chart-label">
+                        <span>{{ item["Subscription Range"] }}</span>
+
+                        <span>
+                            {{ "{:,}".format(item["count"]) }}
+                            customers |
+                            {{ "%.2f"|format(item.churn_rate) }}%
+                        </span>
+                    </div>
+
+                    <progress
+                        class="chart-progress analysis"
+                        value="{{ item.churn_rate }}"
+                        max="100">
+                    </progress>
+                </div>
+            {% endfor %}
+        </div>
+
+        <div class="analysis-card">
+            <h2>Churn Rate by Customer Usage</h2>
+            <p class="chart-description">
+                Comparison of customer churn rates based on their
+                total seconds of usage.
+            </p>
+
+            {% for item in usage_stats %}
+                <div class="analysis-row">
+                    <div class="chart-label">
+                        <span>{{ item["Usage Range"] }}</span>
+
+                        <span>
+                            {{ "{:,}".format(item["count"]) }}
+                            customers |
+                            {{ "%.2f"|format(item.churn_rate) }}%
+                        </span>
+                    </div>
+
+                    <progress
+                        class="chart-progress analysis"
+                        value="{{ item.churn_rate }}"
+                        max="100">
+                    </progress>
+                </div>
+            {% endfor %}
+        </div>
+
+    </div>
+
+    <div class="welcome-section">
+        <h2>Customer Engagement</h2>
+        <p>
+            Explore how customer communication and usage
+            patterns relate to churn.
+        </p>
+    </div>
+
+    <div class="analysis-grid">
+
+        <div class="analysis-card">
+            <h2>Churn Rate by SMS Frequency</h2>
+            <p class="chart-description">
+                Comparison of customer churn rates based on
+                the frequency of SMS usage.
+            </p>
+
+            {% for item in sms_stats %}
+                <div class="analysis-row">
+                    <div class="chart-label">
+                        <span>{{ item["SMS Range"] }}</span>
+
+                        <span>
+                            {{ "{:,}".format(item["count"]) }}
+                            customers |
+                            {{ "%.2f"|format(item.churn_rate) }}%
+                        </span>
+                    </div>
+
+                    <progress
+                        class="chart-progress analysis"
+                        value="{{ item.churn_rate }}"
+                        max="100">
+                    </progress>
+                </div>
+            {% endfor %}
+        </div>
+
+        <div class="analysis-card">
+            <h2>Churn Rate by Distinct Called Numbers</h2>
+            <p class="chart-description">
+                Comparison of customer churn rates based on
+                the number of different phone numbers contacted.
+            </p>
+
+            {% for item in called_numbers_stats %}
+                <div class="analysis-row">
+                    <div class="chart-label">
+                        <span>{{ item["Called Numbers Range"] }}</span>
+
+                        <span>
+                            {{ "{:,}".format(item["count"]) }}
+                            customers |
+                            {{ "%.2f"|format(item.churn_rate) }}%
+                        </span>
+                    </div>
+
+                    <progress
+                        class="chart-progress analysis"
+                        value="{{ item.churn_rate }}"
+                        max="100">
+                    </progress>
+                </div>
+            {% endfor %}
+        </div>
+
+    </div>
+
+{% endblock %}

@@ -1,0 +1,71 @@
+{% extends "base.html" %}
+
+{% block title %}Overview | Customer Churn Dashboard{% endblock %}
+
+{% block heading %}Overview{% endblock %}
+
+{% block content %}
+
+    <div class="welcome-section">
+        <h2>Customer Overview</h2>
+        <p>
+            Explore customer churn patterns and understand
+            the factors influencing customer retention.
+        </p>
+    </div>
+
+    <div class="metrics-grid">
+
+        <div class="metric-card">
+            <h3>Total Customers</h3>
+            <p class="metric-value">{{ "{:,}".format(total_customers) }}</p>
+        </div>
+
+        <div class="metric-card">
+            <h3>Churned Customers</h3>
+            <p class="metric-value">{{ "{:,}".format(churned_count) }}</p>
+        </div>
+
+        <div class="metric-card">
+            <h3>Churn Rate</h3>
+            <p class="metric-value">{{ churn_rate }}%</p>
+        </div>
+
+        <div class="metric-card">
+            <h3>Retained Customers</h3>
+            <p class="metric-value">{{ "{:,}".format(retained_count) }}</p>
+        </div>
+
+    </div>
+
+    <div class="chart-card">
+
+        <h2>Customer Retention and Churn Distribution</h2>
+        
+        <div class="chart-item">
+            <div class="chart-label">
+                <span>Retained</span>
+                <span>{{ "{:,}".format(retained_count) }} ({{ retained_rate }}%)</span>
+            </div>
+
+            <progress class="chart-progress retained"
+                      value="{{ retained_rate }}"
+                      max="100">
+            </progress>
+        </div>
+
+        <div class="chart-item">
+            <div class="chart-label">
+                <span>Churned</span>
+                <span>{{ "{:,}".format(churned_count) }} ({{ churn_rate }}%)</span>
+            </div>
+
+            <progress class="chart-progress churned"
+                      value="{{ churn_rate }}"
+                      max="100">
+            </progress>
+        </div>
+
+    </div>
+
+{% endblock %}

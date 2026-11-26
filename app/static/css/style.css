@@ -1,0 +1,378 @@
+
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+body {
+    font-family: Arial, sans-serif;
+    background-color: #111827;
+    color: #e5e7eb;
+}
+
+.dashboard {
+    display: flex;
+    min-height: 100vh;
+}
+
+/* SIDEBAR */
+
+.sidebar {
+    width: 250px;
+    background-color: #0b1220;
+    color: #e5e7eb;
+    padding: 30px 20px;
+    flex-shrink: 0;
+}
+
+.sidebar-header {
+    margin-bottom: 40px;
+}
+
+.sidebar-header h2 {
+    font-size: 20px;
+    margin-bottom: 6px;
+}
+
+.sidebar-header p {
+    font-size: 13px;
+    color: #94a3b8;
+}
+
+.sidebar-nav {
+    display: flex;
+    flex-direction: column;
+    gap: 6px;
+}
+
+.sidebar-nav a {
+    text-decoration: none;
+    color: #aab6c7;
+    padding: 11px 14px;
+    border-radius: 5px;
+    font-size: 14px;
+}
+
+.sidebar-nav a:hover,
+.sidebar-nav a.active {
+    background-color: #263449;
+    color: #ffffff;
+}
+
+/* MAIN CONTENT */
+
+.main-content {
+    flex: 1;
+    min-width: 0;
+}
+
+.topbar {
+    background-color: #151f2e;
+    padding: 25px 35px;
+    border-bottom: 1px solid #293548;
+}
+
+.topbar h1 {
+    font-size: 23px;
+    font-weight: 600;
+}
+
+.page-content {
+    padding: 30px 35px;
+}
+
+.welcome-section {
+    margin-bottom: 25px;
+}
+
+.welcome-section h2 {
+    font-size: 21px;
+    margin-bottom: 8px;
+}
+
+.welcome-section p {
+    color: #9ca3af;
+    font-size: 14px;
+    line-height: 1.6;
+}
+
+/* SHARED CARDS */
+
+.metric-card,
+.chart-card,
+.analysis-card,
+.prediction-card,
+.prediction-result {
+    background-color: #1b2738;
+    border: 1px solid #2b3a4d;
+    border-radius: 7px;
+}
+
+.metric-card,
+.chart-card,
+.analysis-card,
+.prediction-card {
+    padding: 22px;
+}
+
+/* OVERVIEW */
+
+.metrics-grid {
+    display: grid;
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+    gap: 18px;
+}
+
+.metric-card h3 {
+    color: #9ca3af;
+    font-size: 14px;
+    font-weight: 500;
+    margin-bottom: 12px;
+}
+
+.metric-value {
+    font-size: 29px;
+    font-weight: 700;
+    color: #f1f5f9;
+}
+
+.chart-card {
+    margin-top: 22px;
+}
+
+.chart-card h2,
+.analysis-card h2 {
+    font-size: 17px;
+    margin-bottom: 20px;
+}
+
+.chart-item {
+    margin-bottom: 20px;
+}
+
+.chart-item:last-child {
+    margin-bottom: 0;
+}
+
+.chart-label {
+    display: flex;
+    justify-content: space-between;
+    gap: 15px;
+    font-size: 14px;
+    margin-bottom: 9px;
+}
+
+.chart-progress {
+    width: 100%;
+    height: 10px;
+    appearance: none;
+    border: none;
+    border-radius: 10px;
+    overflow: hidden;
+}
+
+.chart-progress::-webkit-progress-bar {
+    background-color: #344256;
+}
+
+.chart-progress.retained::-webkit-progress-value {
+    background-color: #4b9b7a;
+}
+
+.chart-progress.churned::-webkit-progress-value {
+    background-color: #c47765;
+}
+
+.chart-progress.retained::-moz-progress-bar {
+    background-color: #4b9b7a;
+}
+
+.chart-progress.churned::-moz-progress-bar {
+    background-color: #c47765;
+}
+
+/* CHURN ANALYSIS */
+
+.analysis-grid {
+    display: grid;
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+    gap: 18px;
+    margin-top: 22px;
+}
+
+.analysis-grid .analysis-card {
+    margin-top: 0;
+}
+
+.analysis-card {
+    margin-top: 22px;
+}
+
+.chart-description {
+    color: #9ca3af;
+    font-size: 14px;
+    line-height: 1.6;
+    margin-bottom: 25px;
+}
+
+.analysis-row {
+    margin-bottom: 22px;
+}
+
+.analysis-row:last-child {
+    margin-bottom: 0;
+}
+
+/* PREDICTION FORM */
+
+.prediction-card {
+    margin-top: 22px;
+}
+
+.form-grid {
+    display: grid;
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+    gap: 18px;
+}
+
+.form-group {
+    display: flex;
+    flex-direction: column;
+    gap: 8px;
+}
+
+.form-group label {
+    font-size: 14px;
+    font-weight: 500;
+    color: #cbd5e1;
+}
+
+.form-group input,
+.form-group select {
+    width: 100%;
+    padding: 10px;
+    background-color: #111c2c;
+    color: #e5e7eb;
+    border: 1px solid #39485c;
+    border-radius: 5px;
+    font-size: 14px;
+}
+
+.form-group input:focus,
+.form-group select:focus {
+    outline: none;
+    border-color: #6b9dba;
+}
+
+.prediction-card button {
+    margin-top: 22px;
+    padding: 11px 20px;
+    background-color: #36566b;
+    color: #ffffff;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+    font-size: 14px;
+}
+
+.prediction-card button:hover {
+    background-color: #426a82;
+}
+
+/* PREDICTION RESULT */
+
+.prediction-result {
+    padding: 22px;
+    margin-top: 22px;
+    border-left: 4px solid;
+}
+
+.prediction-result h2 {
+    font-size: 17px;
+    margin-bottom: 15px;
+}
+
+.retained-result {
+    background-color: #192f2c;
+    border-color: #4b9b7a;
+}
+
+.churn-result {
+    background-color: #352524;
+    border-color: #c47765;
+}
+
+.prediction-label {
+    font-size: 23px;
+    font-weight: bold;
+    margin-bottom: 18px;
+}
+
+.probability-label {
+    color: #aab6c7;
+    font-size: 14px;
+}
+
+.probability-value {
+    font-size: 27px;
+    font-weight: bold;
+    margin-top: 5px;
+}
+
+/* RESPONSIVE LAYOUT */
+
+@media (max-width: 768px) {
+    .dashboard {
+        flex-direction: column;
+    }
+
+    .sidebar {
+        width: 100%;
+        padding: 20px;
+    }
+
+    .sidebar-header {
+        margin-bottom: 20px;
+    }
+
+    .sidebar-nav {
+        flex-direction: row;
+        flex-wrap: wrap;
+    }
+
+    .topbar {
+        padding: 20px;
+    }
+
+    .page-content {
+        padding: 20px;
+    }
+
+    .analysis-grid {
+        grid-template-columns: 1fr;
+    }
+}
+
+@media (max-width: 500px) {
+    .metrics-grid,
+    .form-grid {
+        grid-template-columns: 1fr;
+    }
+}
+
+.chart-progress.analysis {
+    accent-color: #648da8;
+}
+
+.chart-progress.analysis::-webkit-progress-value {
+    background-color: #648da8;
+}
+
+.chart-progress.analysis::-moz-progress-bar {
+    background-color: #648da8;
+}
+
+.welcome-section:not(:first-child) {
+    margin-top: 35px;
+}

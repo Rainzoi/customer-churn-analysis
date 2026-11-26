@@ -1,0 +1,180 @@
+
+{% extends "base.html" %}
+
+{% block title %}Predict Churn | Customer Churn Dashboard{% endblock %}
+
+{% block heading %}Predict Churn{% endblock %}
+
+{% block content %}
+
+    <div class="welcome-section">
+        <h2>Customer Churn Prediction</h2>
+        <p>
+            Enter the customer's information below to estimate
+            their likelihood of churning.
+        </p>
+    </div>
+
+    <div class="prediction-card">
+        <form method="POST" action="{{ url_for('predict') }}">
+
+            <div class="form-grid">
+
+                <div class="form-group">
+                    <label for="call_failure">Call Failure</label>
+                    <input
+                        type="number"
+                        id="call_failure"
+                        name="Call  Failure"
+                        min="0"
+                        step="any"
+                        placeholder="Enter call failures"
+                        required>
+                </div>
+
+                <div class="form-group">
+                    <label for="complains">Complains</label>
+                    <select id="complains" name="Complains" required>
+                        <option value="0">No</option>
+                        <option value="1">Yes</option>
+                    </select>
+                </div>
+
+                <div class="form-group">
+                    <label for="subscription_length">Subscription Length</label>
+                    <input
+                        type="number"
+                        id="subscription_length"
+                        name="Subscription  Length"
+                        min="0"
+                        step="any"
+                        placeholder="Enter subscription length"
+                        required>
+                </div>
+
+                <div class="form-group">
+                    <label for="charge_amount">Charge Amount</label>
+                    <input
+                        type="number"
+                        id="charge_amount"
+                        name="Charge  Amount"
+                        min="0"
+                        step="any"
+                        placeholder="Enter charge amount"
+                        required>
+                </div>
+
+                <div class="form-group">
+                    <label for="seconds_of_use">Seconds of Use</label>
+                    <input
+                        type="number"
+                        id="seconds_of_use"
+                        name="Seconds of Use"
+                        min="0"
+                        step="any"
+                        placeholder="Enter seconds of use"
+                        required>
+                </div>
+
+                <div class="form-group">
+                    <label for="frequency_of_use">Frequency of Use</label>
+                    <input
+                        type="number"
+                        id="frequency_of_use"
+                        name="Frequency of use"
+                        min="0"
+                        step="any"
+                        placeholder="Enter usage frequency"
+                        required>
+                </div>
+
+                <div class="form-group">
+                    <label for="frequency_sms">Frequency of SMS</label>
+                    <input
+                        type="number"
+                        id="frequency_sms"
+                        name="Frequency of SMS"
+                        min="0"
+                        step="any"
+                        placeholder="Enter SMS frequency"
+                        required>
+                </div>
+
+                <div class="form-group">
+                    <label for="distinct_called_numbers">Distinct Called Numbers</label>
+                    <input
+                        type="number"
+                        id="distinct_called_numbers"
+                        name="Distinct Called Numbers"
+                        min="0"
+                        step="any"
+                        placeholder="Enter distinct numbers"
+                        required>
+                </div>
+
+                <div class="form-group">
+                    <label for="tariff_plan">Tariff Plan</label>
+                    <select id="tariff_plan" name="Tariff Plan" required>
+                        <option value="1">Plan 1</option>
+                        <option value="2">Plan 2</option>
+                    </select>
+                </div>
+
+                <div class="form-group">
+                    <label for="status">Status</label>
+                    <select id="status" name="Status" required>
+                        <option value="1">Status 1</option>
+                        <option value="2">Status 2</option>
+                    </select>
+                </div>
+
+                <div class="form-group">
+                    <label for="age">Age</label>
+                    <input
+                        type="number"
+                        id="age"
+                        name="Age"
+                        min="0"
+                        step="any"
+                        placeholder="Enter age"
+                        required>
+                </div>
+
+                <div class="form-group">
+                    <label for="customer_value">Customer Value</label>
+                    <input
+                        type="number"
+                        id="customer_value"
+                        name="Customer Value"
+                        min="0"
+                        step="any"
+                        placeholder="Enter customer value"
+                        required>
+                </div>
+
+            </div>
+
+            <button type="submit">Predict Churn</button>
+
+        </form>
+    </div>
+
+    {% if result %}
+        <div class="prediction-result {{ 'retained-result' if result['Prediction'] == 'Retained' else 'churn-result' }}">
+
+            <h2>Prediction Result</h2>
+
+            <p class="prediction-label">
+                {{ result["Prediction"] }}
+            </p>
+
+            <p class="probability-label">Churn Probability</p>
+
+            <p class="probability-value">
+                {{ (result["Churn Probability"] * 100) | round(2) }}%
+            </p>
+
+        </div>
+    {% endif %}
+
+{% endblock %}

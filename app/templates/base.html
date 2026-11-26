@@ -1,0 +1,54 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>{% block title %}Customer Churn Dashboard{% endblock %}</title>
+    <link rel="stylesheet" href="{{ url_for('static', filename='css/style.css') }}">
+</head>
+
+<body>
+
+    <div class="dashboard">
+
+        <aside class="sidebar">
+
+            <div class="sidebar-header">
+                <h2>Churn Analysis</h2>
+                <p>Customer Dashboard</p>
+            </div>
+          
+            <nav class="sidebar-nav">
+                <a href="{{ url_for('overview') }}"
+                class="{{ 'active' if request.endpoint == 'overview' else '' }}">
+                    Overview
+                </a>
+
+                <a href="{{ url_for('analysis') }}"
+                class="{{ 'active' if request.endpoint == 'analysis' else '' }}">
+                    Churn Analysis
+                </a>
+
+                <a href="{{ url_for('predict') }}"
+                class="{{ 'active' if request.endpoint == 'predict' else '' }}">
+                    Predict Churn
+                </a>
+            </nav>
+        </aside>
+
+        <main class="main-content">
+
+            <header class="topbar">
+                <h1>{% block heading %}Overview{% endblock %}</h1>
+            </header>
+
+            <section class="page-content">
+                {% block content %}{% endblock %}
+            </section>
+
+        </main>
+
+    </div>
+
+</body>
+</html>
