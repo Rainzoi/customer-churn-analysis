@@ -21,10 +21,6 @@ def prepare_data():
     # 2. CREATE GROUP IDENTIFIERS
     # ==================================================
 
-    # Rows with identical predictor values receive the same
-    # group identifier. This keeps identical feature
-    # combinations together during the split.
-
     groups = pd.MultiIndex.from_frame(X).factorize()[0]
 
     # ==================================================
