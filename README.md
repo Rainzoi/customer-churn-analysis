@@ -8,6 +8,17 @@ The goal is to understand which customer behaviors are associated with churn and
 
 The project follows a data analysis workflow that includes data auditing, exploratory data analysis, data preparation, model training, evaluation, and model interpretation.
 
+## Dashboard Preview
+
+### Overview
+![Dashboard Overview](screenshots/overview.png)
+
+### Churn Analysis
+![Churn Analysis](screenshots/churn-analysis.png)
+
+### Predict Churn
+![Churn Prediction](screenshots/predict-churn.png)
+
 ## Business Question
 
 Can customer behavior and account information be used to identify customers who are likely to churn, and which factors are most strongly associated with that decision?
